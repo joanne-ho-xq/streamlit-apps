@@ -4,6 +4,11 @@ import numpy as np
 import pandas as pd
 import difflib # helpers for computing deltas
 import random
+# imports form surprise
+from surprise import accuracy, Dataset, Reader, SVD
+from surprise.model_selection import cross_validate
+from surprise.model_selection import GridSearchCV
+from collections import defaultdict
 
 siteHeader = st.container()
 dataset = st.container()
