@@ -13,6 +13,7 @@ from collections import defaultdict
 
 siteHeader = st.container()
 model_prediction = st.container()
+bts = st.container()
 dataset = st.container()
 new_features = st.container()
 
@@ -100,8 +101,7 @@ with siteHeader:
     
 with model_prediction:
     st.header("Let's Explore!")
-    st.header("Find your Instagram user id using the website below")
-    components.iframe("https://www.instafollowers.co/find-instagram-user-id")
+    st.subheader("Find your Instagram user id using the website: https://www.instafollowers.co/find-instagram-user-id")
     st.text("Input your profile id and you're good to go!")
     
     # Get user inputs
@@ -110,14 +110,17 @@ with model_prediction:
     # Add a submit button
     if st.button("Submit"):
         st.write(generate_recommendation(profile_id, algo, recsys_df))
+
+with bts:
+    st.header("Behind the scene...")
     
 with dataset:
-    st.header("Dataset: Instagram posts")
+    st.subheader("Dataset: Instagram posts")
     st.text("I found this dataset from Kaggle and I've decided to work with it")
     st.text("because I find that social media has a great influence on")
     st.text("where we decide to go for our holidays.")
     st.write(instagram_data.head())
     
 with new_features:
-    st.header("New features I came up with")
+    st.subheader("New features I came up with")
     st.markdown("* **user rating:** based on sentiment analysis on the caption of the Instagram posts, I've feature engineered the user rating on the location tagged")
