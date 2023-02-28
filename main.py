@@ -56,7 +56,7 @@ def get_location_info(new_location_id, metadata):
     Returns some basic information about a location given the location id and the metadata dataframe
     """
     
-    location_info = metadata[metadata['new_location_id'] == new_location_id][['new_location_id', 'name', 
+    location_info = metadata[metadata['new_location_id'] == new_location_id][['name', 
                                                     'city', 'cd']]
     return location_info.to_dict(orient='records')
 
@@ -78,6 +78,7 @@ def generate_recommendation(profile_id, model, metadata, thresh=2.5):
     """
     
     if profile_id in metadata['profile_id'].values:
+        st.write("Not sure where to go? Check this out!")
         names = list(metadata['name'].values)
         random.shuffle(names)
         for name in names:
